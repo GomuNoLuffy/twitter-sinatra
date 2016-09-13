@@ -1,0 +1,5 @@
+	<% @followers.each do |t| %>
+		<div class='each-tweet'>
+			<img src="<%= t.follower.data_url %>" width='15' height='15'> <a href="/user/<%= t.follower.id %>"> <%= t.follower.full_name %> </a></div>
+		</div>	
+	<% end %>

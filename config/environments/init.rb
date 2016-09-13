@@ -16,10 +16,20 @@ require 'logger'
 	# sinatra
 require 'sinatra'
 require "sinatra/reloader" if development?
+require 'sinatra/flash'
 
 	# embedded ruby
 require 'erb'
 require 'uri'
+
+	# misc
+require 'will_paginate'
+require 'will_paginate/active_record'
+require 'faker'
+require 'bcrypt'
+require 'identicon'
+require 'friendly_id'
+require 'time_ago_in_words'
 ######################################################################
 
 

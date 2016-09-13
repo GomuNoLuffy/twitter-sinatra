@@ -1,0 +1,54 @@
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="avatar">
+        <center><img src="<%= @user.data_url %>" height='200' width='200'></center>
+    </div>
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+            <div class="col-sm-12">
+                <center>
+                    <h2><%= @user.full_name %></h2>
+                    <p><strong>Email: </strong> <%= @user.email %> </p>
+                    <p><strong>Biography: </strong> <%= @user.bio %> </p>
+                </center>
+            </div>            
+            <div class="col-xs-12 divider text-center">
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong> <%= @user.followed_in_followership.count %> </strong></h2>                    
+                    <p><small><a href="/user/<%= @user.id %>/followers">Followers</a></small></p>
+
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong><%= @user.follower_in_followership.count %></strong></h2>                    
+                    <p><small><a href="/user/<%= @user.id %>/following">Following</a></small></p>
+                    <br>
+
+                    <% if current_user.id != @user.id %>
+                    
+                        <% if @user.followed_in_followership.pluck(:follower_id).include? @current_user.id %>
+                        <form action="/user/<%= @user.id %>/unfollow" method="post">
+                        <button class="btn btn-danger btn-block"><span class="fa fa-minus-circle"></span> Unfollow </button>
+                        </form>
+                        <% else %>
+                        <form action="/user/<%= @user.id %>/follow" method="post">
+                        <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
+                        </form>
+                        <% end %>
+
+                    <% else %>
+
+                        <form action="/user/edit" method="get">
+                        <button class="btn btn-info btn-block"><span class="fa fa-user"></span> Edit Profile </button>
+                        </form>
+                    
+                    <% end %>
+                    <%= flash[:notice] %>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong><%= @user.tweets.count %></strong></h2>                    
+                    <p><small><a href="/user/<%= @user.id %>/tweets">Tweets</a></small></p>
+                </div>
+            </div>              
+		</div>
+	</div>
+</div>

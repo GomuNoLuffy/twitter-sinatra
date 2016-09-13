@@ -24,6 +24,15 @@ gem 'rake'
 # Adding rspec for running unit testing
 gem 'rspec'
 
+# Misc
+gem 'will_paginate', '~> 3.1.0'
+gem 'faker'
+gem 'bcrypt'
+gem 'sinatra-flash'
+gem 'identicon'
+gem 'friendly_id', '~> 5.1.0'
+gem 'time_ago_in_words'
+
 group :development, :test do
 	# Adding shotgun for local web hosting
 	gem 'shotgun'

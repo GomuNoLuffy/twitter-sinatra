@@ -1,0 +1,6 @@
+	<% @user_tweets.each do |t| %>
+		<div class='each-tweet'>
+			<div class='content'><%= t.content %><br></div>
+			<div class='tweet-by'><a href="/tweet/<%= t.id %>"><%= t.time_ago %></a> by <img src="<%= t.user.data_url %>" width='15' height='15'> <a href="/user/<%= t.user.id %>"> <%= t.user.full_name %> </a></div>
+		</div>	
+	<% end %>

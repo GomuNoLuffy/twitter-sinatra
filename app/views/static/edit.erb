@@ -1,0 +1,68 @@
+<p><%= flash[:edit_error] %></p>
+<form class="form-horizontal" method="post" action="/user/edit">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Edit Your Profile</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="name">First Name</label>  
+  <div class="col-md-4">
+  <input id="first_name" name="user[first_name]" type="text" placeholder="<%= current_user.first_name %>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="vorname">Last Name</label>  
+  <div class="col-md-4">
+  <input id="last_name" name="user[last_name]" type="text" placeholder="<%= current_user.last_name %>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<!--
+<div class="form-group">
+  <label class="col-md-4 control-label" for="vorname">Password</label>  
+  <div class="col-md-4">
+  <input id="last_name" name="user[password]" type="password" class="form-control input-md" required="">
+    
+  </div>
+</div>
+-->
+
+<!-- Text input-->
+<!--
+<div class="form-group">
+  <label class="col-md-4 control-label" for="vorname">Confirm Password</label>  
+  <div class="col-md-4">
+  <input id="last_name" name="user[password_confirmation]" type="password" class="form-control input-md" required="">
+    
+  </div>
+</div>
+-->
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="anschrift">Biography</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="anschrift" name="user[bio]"><%= current_user.bio %></textarea>
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="anmelden"></label>
+  <div class="col-md-8">
+    <button id="submit" name="anmelden" class="btn btn-success">Save Changes</button>
+    <button id="reset" name="reset" class="btn btn-danger">Reset</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+

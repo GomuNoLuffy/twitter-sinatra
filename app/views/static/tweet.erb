@@ -1,0 +1,21 @@
+<div class='each-tweet'>
+	<div class='content'><%= @tweet.content %><br></div>
+	<div class='tweet-by'><a href="/tweet/<%= @tweet.id %>"><%= @tweet.time_ago %></a> by <img src="<%= @tweet.user.data_url %>" width='15' height='15'> <a href="/user/<%= @tweet.user.id %>"> <%= @tweet.user.full_name %> </a></div>
+</div>	
+
+
+<% if @tweet.user_id == current_user.id %>
+	<div class='tweet-form-div'>
+
+		<form id='tweet-edit' class ='form-group' method="post" action="/tweet/<%= @tweet.id %>/edit">
+		<textarea class='form-control' form='tweet-edit' placeholder="<%= @tweet.content %>" name="new_content" rows="6"></textarea>
+		<br>
+		<input id ='tweet-btn' class="btn btn-primary" type='submit' value='Save Changes'>
+		</form>
+
+		<form id='tweet-delete' class ='form-group' method="post" action="/tweet/<%= @tweet.id %>/delete">
+		<input id ='tweet-delete' class="btn btn-danger" type='submit' value='Delete this tweet'>
+		</form>
+
+	</div>
+<% end %>

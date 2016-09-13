@@ -1,0 +1,16 @@
+<center> Welcome <%= current_user.full_name %> !</center>
+
+	<div class='tweet-form-div'>
+
+		<form id='tweet-form' class ='form-group' method="post" action="/user/tweet">
+		<textarea class='form-control' form='tweet-form' placeholder='Tweet here! (Max: 140 characters)' name="content" rows="6"></textarea>
+		<br>
+		<input id ='tweet-btn' class="btn btn-primary" type='submit' value='Tweet!'>
+		</form>
+		<p><i><%= flash[:tweet_error] %></i></p>
+	</div>
+
+
+<div data-page="<%= @all_tweets.total_pages %>" id='tweet-feed'>
+	<%= erb :"static/feed", layout: false %>
+</div>
