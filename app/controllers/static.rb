@@ -38,7 +38,7 @@ post '/signup' do
 	session[:error] = nil
 	params[:user]['gender'] = params[:user]['gender'].to_i
 	user = User.new(params[:user])
-	byebug
+
 	if user.save
 		session[:user_id] = user.id
 		redirect '/'
@@ -103,23 +103,23 @@ end
 
 get '/user/:user_id/tweets' do
 	redirect '/' unless logged_in?
-	user = User.find(params[:user_id])
-	@user_tweets = user.tweets.all
-	erb :"static/user-tweets"
+	@user = User.find(params[:user_id])
+	@user_tweets = @user.tweets.all
+	erb :"static/user-tweets", layout: !request.xhr?
 end
 
 get '/user/:user_id/following' do
 	redirect '/' unless logged_in?
 	user = User.find(params[:user_id])
 	@followings = user.follower_in_followership.all
-	erb :"static/following"
+	erb :"static/following", layout: !request.xhr?
 end
 
 get '/user/:user_id/followers' do
 	redirect '/' unless logged_in?
 	user = User.find(params[:user_id])
 	@followers = user.followed_in_followership.all
-	erb :"static/followers"
+	erb :"static/followers", layout: !request.xhr?
 end
 
 get '/tweet/:tweet_id' do

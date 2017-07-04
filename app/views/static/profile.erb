@@ -12,14 +12,14 @@
                     <p><strong>Biography: </strong> <%= @user.bio %> </p>
                 </center>
             </div>            
-            <div class="col-xs-12 divider text-center">
+            <div class="col-xs-12 divider text-center profile-container">
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong> <%= @user.followed_in_followership.count %> </strong></h2>                    
+                    <h2 id='follower-count'><strong> <%= @user.followed_in_followership.count %> </strong></h2>                    
                     <p><small><a href="/user/<%= @user.id %>/followers">Followers</a></small></p>
 
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong><%= @user.follower_in_followership.count %></strong></h2>                    
+                    <h2 id='following-count'><strong><%= @user.follower_in_followership.count %></strong></h2>                    
                     <p><small><a href="/user/<%= @user.id %>/following">Following</a></small></p>
                     <br>
 
@@ -27,11 +27,11 @@
                     
                         <% if @user.followed_in_followership.pluck(:follower_id).include? @current_user.id %>
                         <form action="/user/<%= @user.id %>/unfollow" method="post">
-                        <button class="btn btn-danger btn-block"><span class="fa fa-minus-circle"></span> Unfollow </button>
+                        <button id="unfollow-press" class="btn btn-danger btn-block"><span class="fa fa-minus-circle"></span> Unfollow </button>
                         </form>
                         <% else %>
-                        <form action="/user/<%= @user.id %>/follow" method="post">
-                        <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
+                        <form id="follow-form" action="/user/<%= @user.id %>/follow" method="post">
+                        <button id="follow-press" class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
                         </form>
                         <% end %>
 
@@ -51,4 +51,19 @@
             </div>              
 		</div>
 	</div>
+
+    <div id="user-list" style="padding: 10px 100px;"></div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('.profile-container a').on('click', function(e) {
+      $('#user-list').html('<img src="/img/blue-loading.svg" style="display: block; margin:auto; height: 60px;">')
+      
+      e.preventDefault()
+      $.get(e.target.href, function(data) {
+        $('#user-list').html(data)
+      })
+    })
+  })
+</script>

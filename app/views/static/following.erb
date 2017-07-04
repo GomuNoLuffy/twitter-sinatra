@@ -1,4 +1,5 @@
-	<% @followings.each do |t| %>
+	<p>Following <%= @followings.count %> users: </p>
+  <% @followings.each do |t| %>
 		<div class='each-tweet'>
 			<img src="<%= t.followed.data_url %>" width='15' height='15'> <a href="/user/<%= t.followed.id %>"> <%= t.followed.full_name %> </a></div>
 		</div>	

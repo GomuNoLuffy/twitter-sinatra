@@ -1,5 +1,11 @@
 .bundle
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+Thumbs.db
+ehthumbs.db
+.Trashes
 config/database.yml
 db/*.sqlite3
 db/*.sqlite
@@ -25,3 +31,4 @@ chromedriver.log
 bin/
 .env
 *.swp
+.byebug_history

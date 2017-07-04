@@ -34,13 +34,14 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'time_ago_in_words'
 
 group :development, :test do
-	# Adding shotgun for local web hosting
-	gem 'shotgun'
+  # Adding shotgun for local web hosting
+  gem 'shotgun'
+  gem 'byebug'
 end
 
 group :production do
-	# Heroku
-	# ==================
-	gem 'rails_12factor' # Heroku Gem Supports
-	gem 'puma' # Using puma for
+  # Heroku
+  # ==================
+  gem 'rails_12factor' # Heroku Gem Supports
+  gem 'puma' # Using puma for
 end
